@@ -1,0 +1,49 @@
+# Vercel Configuration
+.vercel/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment Variables
+.env
+.env.local
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ChromaDB and Caches
+chroma_db/
+cache_data/
+.chroma/
+
+# Logs and Debug text files
+*.log
+!server.log
+*_out.txt
+test_output.txt
+test_result.txt
+debug_output.txt
+response.txt
+response.json
+last_search_results.json
+
+# Developer / Scratchpad Python scripts
+debug_*.py
+read_*.py
+reproduce_*.py
+test_*.py
+
+# Agent Planning artifacts
+analysis.md
+architecture_design.md
+agent_fix_plan.md
+bug_fix_report.md
+implementation_plan.md
+task.md
+walkthrough.md
