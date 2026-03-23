@@ -289,3 +289,104 @@ button:hover {
     margin-left: 1.5rem;
     margin-bottom: 0.5rem;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        display: block;
+        height: 100dvh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .app-container {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        min-height: 100dvh;
+        border-radius: 0;
+        flex-direction: column;
+        border: none;
+        box-shadow: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        flex-shrink: 0;
+    }
+
+    .logo {
+        margin-bottom: 0;
+    }
+
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+    
+    .logo svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .tagline {
+        display: none;
+    }
+    
+    .chat-interface {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .chat-container {
+        padding: 1rem;
+    }
+
+    .message {
+        max-width: 95%;
+        gap: 0.5rem;
+    }
+    
+    .avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .content {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .input-area {
+        padding: 0.75rem 1rem;
+        background: var(--sidebar-bg);
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .input-wrapper {
+        padding: 0.25rem 0.25rem 0.25rem 1rem;
+        gap: 0.5rem;
+    }
+    
+    input {
+        min-width: 0;
+        font-size: 0.95rem;
+    }
+    
+    button {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+    }
+    
+    button svg {
+        width: 18px;
+        height: 18px;
+    }
+}

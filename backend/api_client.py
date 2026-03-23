@@ -161,7 +161,6 @@ class RealtyClient:
                 
             all_listings.extend(listings)
             print(f"[API] Fetched pages : {len(listings)} properties")
-            print(listings)
         except requests.exceptions.RequestException as e:
             print(f"Error fetching page : {e}")
             # break

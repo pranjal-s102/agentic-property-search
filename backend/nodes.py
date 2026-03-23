@@ -652,6 +652,7 @@ GUIDELINES:
 - Do NOT mention that you are "missing fields" or explain your logic.
 - Do NOT ask for other information yet.
 - Be natural and conversational.
+- CRITICAL: You MUST ask the user about the {target_field}. Do NOT answer questions, do NOT agree to search, do NOT perform a search or say you will look for options. Your ONLY job right now is to get the {target_field}. If the user provides unrelated information or asks you to search, politely pivot back to asking for the {target_field}.
 """
 
 # ... (rest of prompts) ...
@@ -746,6 +747,7 @@ GUIDELINES:
 - Be natural and conversational
 - Do NOT ask about budget or bedrooms yet
 - If they mentioned a vague location, ask them to be more specific
+- CRITICAL: You MUST ask for the location. Do NOT answer questions, do NOT agree to search, do NOT perform a search or say you will look for options. Your ONLY job right now is to get a specific Suburb and State. If the user asks you to search or provides unrelated information, politely pivot back to asking for the location.
 
 Example: "Which suburb are you interested in? Please include the state, like 'Richmond, VIC'."
 """
