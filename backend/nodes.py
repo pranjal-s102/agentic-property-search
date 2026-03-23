@@ -197,7 +197,8 @@ def guardian_node(state: AgentState):
         - **Auto-Confirm**: If user says "Search in [Suburb]", "Find properties in [Suburb]", or "Show me [Suburb]", set `location=[Suburb]` AND `suburb_confirmation=True`. Don't make them confirm again.
         - **Keywords**: If user explicitly asks for "pool", "gym", "pets", "balcony", extract them to `keywords`.
         - **No Keywords**: If user says "no features", "standard", "basic", or "no" to a features question, extract `keywords=[]` (empty list).
-        - **Radius**: If user says "within 50km", "50km radius", "near X (20km)", extract `search_radius` (int).
+        - **Radius & Commute Time**: If user says "within 50km", extract `search_radius` (int). If user specifies a commute time like "within 20 mins from X" or "30 min drive to Y": extract location as X (or Y) AND convert the time to an approximate radius: 10 mins = 2, 20 mins = 5, 30 mins = 10, 45 mins = 15, 60 mins = 25. Set `search_radius` to this integer.
+        - **Landmarks/Universities**: If the user mentions a landmark like "UNSW", "Sydney Uni", or "CBD", extract the actual Suburb name it resides in (e.g. location="Kensington, NSW" for UNSW).
 
         - **COMPOUND RESPONSES ("Yes... No...")**:
             * If user says "Yes [to search], No [to surrounding]", extract `suburb_confirmation=True` AND `include_surrounding=False`.
@@ -205,6 +206,7 @@ def guardian_node(state: AgentState):
             * If user says "Yes, search nearby" or "Yes, include surrounding", extract `suburb_confirmation=True` AND `include_surrounding=True`.
             * If user says "Just search there", extract `suburb_confirmation=True`.
             * If user says "yes yes", "yep yep", or "yeah yeah", extract `suburb_confirmation=True`.
+            * If user specifies a radius/commute time in response to the confirmation question (e.g. "within 20 mins is fine", "Anything up to 5km"), extract `suburb_confirmation=True` AND the `search_radius`.
             * If user gives mixed signals (e.g. "no no yes no no yes"), trust the **FINAL** word or the affirmative if it appears to be a correction.
     
     2. **BUDGET UPDATES**: If the user mentions ANY of these phrases, you MUST extract and update the budget:
