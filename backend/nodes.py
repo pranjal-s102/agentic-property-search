@@ -400,8 +400,6 @@ def guardian_node(state: AgentState):
                     # No valid suburb found - keep location but clear slug so interviewer asks again
                     print(f"Warning: No suburb found for '{new_profile_data['location']}'. Results were: {[r.get('type') for r in loc_list]}")
             except Exception as e:
-                with open("debug_output.txt", "a", encoding="utf-8") as f:
-                    f.write(f"Location Resolution Error: {e}\\n")
                 print(f"Location Resolution Error: {e}")
         
         # 4. State Reset Logic
@@ -1069,8 +1067,7 @@ def analyzer_node(state: AgentState):
         import traceback
         err = traceback.format_exc()
         print(f"[Analyzer] CRASH: {e}")
-        with open("debug_output.txt", "a", encoding="utf-8") as f:
-            f.write(f"\n[Analyzer Crash] {e}\n{err}\n")
+        print(f"[Analyzer Crash] {e}\n{err}")
         # Return dummy analysis to prevent hard crash
         return {"analysis": "I found some properties but encountered an error analyzing them in detail."}
 
@@ -1106,8 +1103,7 @@ def presenter_node(state: AgentState):
     # Raw listings can be huge, causing context overflow or confusion.
     display_listings = []
     
-    with open("debug_output.txt", "a", encoding="utf-8") as f:
-        f.write(f"Presenter Node: Processing {len(listings)} listings.\\n")
+    print(f"[Presenter] Processing {len(listings)} listings.")
         
     for l in listings[:5]:
         # Extract features safely - API uses nested 'general' structure
@@ -1146,8 +1142,7 @@ def presenter_node(state: AgentState):
         }
         display_listings.append(item)
     
-    with open("debug_output.txt", "a", encoding="utf-8") as f:
-        f.write(f"Display Listings: {len(display_listings)}\\n")
+    print(f"[Presenter] Display Listings: {len(display_listings)}")
         
     prompt = f"""
     CONTEXT: Search succeeded.
